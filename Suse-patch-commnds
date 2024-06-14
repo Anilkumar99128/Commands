@@ -1,0 +1,43 @@
+clear registration
+SUSEConnect -c
+to clean up repos
+SUSEConnect --cleanup
+
+to unregister from subscription
+SUSEConnect --de-register
+
+remove all repos 
+cd /etc/zypp/repos.d 
+rm -f /etc/SUSEConnect
+rm -rf /etc/zypp/credentials.d/*
+rm -rf /etc/zypp/repos.d/*
+rm -f /etc/zypp/services.d/*
+
+to list out the product (SLES.Product and SLES_SAP.Product)
+ 
+cd /etc/products.d/;ls -l
+
+list and registration 
+ 
+zypper lr -d
+SUSEConnect -r 48D0F08E84036590
+zypper ref
+ 
+To list out and enable repos(modules)
+
+SUSEConnect --list-extensions   ( SLES 15SP3 Modules)
+ 
+SUSEConnect -p sle-module-basesystem/15.3/x86_64
+SUSEConnect -p sle-module-python2/15.3/x86_64
+SUSEConnect -p sle-module-legacy/15.3/x86_64
+SUSEConnect -p sle-module-server-applications/15.3/x86_64
+ 
+SUSEConnect -p sle-module-containers/15.3/x86_64
+SUSEConnect -p sle-module-desktop-applications/15.3/x86_64
+SUSEConnect -p sle-module-development-tools/15.3/x86_64
+SUSEConnect -p sle-module-public-cloud/15.3/x86_64
+SUSEConnect -p PackageHub/15.3/x86_64
+SUSEConnect -p sle-module-cap-tools/15.3/x86_64
+SUSEConnect -p sle-module-web-scripting/15.3/x86_64
+ 
+SUSEConnect -p sle-ha/15.3/x86_64    - FOR CLUSTER Servers
